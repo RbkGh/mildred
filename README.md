@@ -15,7 +15,7 @@ at a different company.<br>
 Both of them are in charge of the books that workers use to sign in and out.<br>
 So Mildred signs you in and out of the workplace
 
-##TODO 
+## TODO 
 * Grab location and time when user enters a geofence(signin)
 * Grab location and time when user exits a geofence(signout)
 * Send user details to a web service
