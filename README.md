@@ -9,7 +9,7 @@ Did you have to sign out too?<br>
 **Mildred will sign you in and out of your workplace location seamlessly!**
 ## Why the name "Mildred"?
 Mildred happens to be the name of the office manager at a place I worked,<br>
-and another Mildred(She never said 'YES' to my proposal =D) <br>
+and another Mildred(She never said 'YES' to my proposal 😊) <br>
 happens to be a friend of mine who was also an office manager <br>
 at a different company.<br>
 Both of them are in charge of the books that workers use to sign in and out.<br>
