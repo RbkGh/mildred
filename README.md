@@ -36,7 +36,7 @@ Warning
 
 Contributions
 -----
-*In DJ Khaled's voice : "I APPRECIATE THAT,YOU SMART,YOU THE BEST!"*
+*In DJ Khaled's voice : "I APPRECIATE THAT,YOU SMART,YOU THE BEST!"* ☝️ ![](https://www.smileysapp.com/emojis/ok-smiley.png)
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)<br>
 Make sure to write your name and email id in format `Name<email>` <br>
