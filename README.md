@@ -41,7 +41,7 @@ Contributions
 2. Create your feature branch (`git checkout -b my-new-feature`)<br>
 Make sure to write your name and email id in format `Name<email>` <br>
 in the license declaration above every file you make change to.<br>
-3. Commit your changes (`git commit -am 'Added some feature'`)
+3. Commit your changes (`git commit -m 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
