@@ -3,11 +3,13 @@ package com.swiftpot.android.mildred
 
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.SupportActivity
+import base.MildredBaseActivity
 import com.swiftpot.android.mildred.fragments.FragmentHome
 
 import me.yokeyword.fragmentation_swipeback.SwipeBackActivity
 
-class MainActivity : SwipeBackActivity(), FragmentHome.OnFragmentInteractionListener {
+class MainActivity : MildredBaseActivity(), FragmentHome.OnFragmentInteractionListener {
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

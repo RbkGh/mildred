@@ -41,6 +41,9 @@ dependencies {
     compile "com.android.support:support-v4:$support_lib_version"
     compile "com.android.support:design:$support_lib_version"
 
+    //permissions
+    compile 'com.karumi:dexter:4.1.1'
+
     // appcompat-v7 is required
     compile 'me.yokeyword:fragmentation:1.0.7'
     compile 'me.yokeyword:fragmentation:1.0.7'
