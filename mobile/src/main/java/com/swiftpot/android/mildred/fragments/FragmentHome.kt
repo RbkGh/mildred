@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.swiftpot.android.mildred.R
+import me.yokeyword.fragmentation.SupportFragment
 
 
 /**
@@ -18,7 +19,7 @@ import com.swiftpot.android.mildred.R
  * Use the [FragmentHome.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentHome : Fragment() {
+class FragmentHome : SupportFragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null

@@ -41,6 +41,11 @@ dependencies {
     compile "com.android.support:support-v4:$support_lib_version"
     compile "com.android.support:design:$support_lib_version"
 
+    // appcompat-v7 is required
+    compile 'me.yokeyword:fragmentation:1.0.7'
+    compile 'me.yokeyword:fragmentation:1.0.7'
+    compile 'me.yokeyword:fragmentation-swipeback:1.0.7'
+
     testCompile 'junit:junit:4.12'
 }
 repositories {
