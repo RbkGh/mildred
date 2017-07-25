@@ -1,4 +1,4 @@
-package base
+package com.swiftpot.android.mildred.base
 
 import android.Manifest
 import android.os.Bundle
@@ -22,15 +22,16 @@ open class MildredBaseActivity : SwipeBackActivity() {
         //Less messier way of dealing with android M permissions
         Dexter.withActivity(this)
                 .withPermissions(
+                        Manifest.permission.INTERNET,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.ACCESS_FINE_LOCATION
                 ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                TODO("not implemented")
             }
 
             override fun onPermissionRationaleShouldBeShown(p0: MutableList<PermissionRequest>?, p1: PermissionToken?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                TODO("not implemented")
             }
         })
                 .withErrorListener(object : PermissionRequestErrorListener {

@@ -1,4 +1,4 @@
-package base
+package com.swiftpot.android.mildred.base
 
 import android.app.Application
 import com.swiftpot.android.mildred.BuildConfig

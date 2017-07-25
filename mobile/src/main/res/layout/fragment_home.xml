@@ -13,7 +13,7 @@
         android:layout_alignBottom="@+id/view6"
         android:layout_toStartOf="@+id/view6"
         app:backgroundTint="#a51818"
-        app:srcCompat="@mipmap/ic_sign_in" />
+        android:src="@mipmap/ic_sign_in" />
 
 
     <view
