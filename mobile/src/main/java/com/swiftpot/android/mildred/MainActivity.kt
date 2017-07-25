@@ -7,6 +7,8 @@ import com.swiftpot.android.mildred.base.MildredBaseActivity
 import com.swiftpot.android.mildred.fragments.FragmentHome
 
 class MainActivity : MildredBaseActivity(), FragmentHome.OnFragmentInteractionListener {
+
+
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -19,5 +21,6 @@ class MainActivity : MildredBaseActivity(), FragmentHome.OnFragmentInteractionLi
             loadRootFragment(R.id.homeLayout, FragmentHome.newInstance("", ""))
         }
     }
+
 
 }
