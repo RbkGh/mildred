@@ -4,9 +4,11 @@ import android.Manifest
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -15,8 +17,12 @@ import android.view.ViewGroup
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.GeofencingClient
 import com.google.android.gms.location.GeofencingRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.swiftpot.android.mildred.R
 import com.swiftpot.android.mildred.services.GeofenceTransitionsIntentService
+import com.swiftpot.android.mildred.util.Constants
 import me.yokeyword.fragmentation.SupportFragment
 import java.util.ArrayList
 
@@ -29,7 +35,14 @@ import java.util.ArrayList
  * Use the [FragmentHome.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentHome : SupportFragment() {
+class FragmentHome : SupportFragment(), OnCompleteListener<Void> {
+
+    override fun onComplete(task: Task<Void>) {
+        mPendingGeofenceTask = PendingGeofenceTask.NONE
+
+        if (task.isSuccessful) {
+        }
+    }
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -60,6 +73,8 @@ class FragmentHome : SupportFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mGeofenceList = arrayListOf()
+        mGeofencingClient = LocationServices.getGeofencingClient(activity)
+
         if (arguments != null) {
             mParam1 = arguments.getString(ARG_PARAM1)
             mParam2 = arguments.getString(ARG_PARAM2)
@@ -71,17 +86,6 @@ class FragmentHome : SupportFragment() {
         return inflater!!.inflate(R.layout.fragment_home, container, false)
     }
 
-    /**
-     * Builds and returns a GeofencingRequest. Specifies the list of geofences to be monitored.
-     * Also specifies how the geofence notifications are initially triggered.
-     */
-    private fun getGeofencingRequest(): GeofencingRequest {
-        val builder: GeofencingRequest.Builder = GeofencingRequest.Builder()
-        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
-        builder.addGeofences(mGeofenceList)
-        return builder.build()
-    }
-
     private fun performPendingGeofenceTask() {
         if (mPendingGeofenceTask == PendingGeofenceTask.ADD) {
             this.addGeofence()
@@ -89,7 +93,8 @@ class FragmentHome : SupportFragment() {
     }
 
     private fun addGeofence() {
-
+        mGeofencingClient?.addGeofences(this.getGeofencingRequest(), this.getGeofencePendingIntent())
+                ?.addOnCompleteListener(this)
     }
 
     /**
@@ -117,6 +122,42 @@ class FragmentHome : SupportFragment() {
         // We use FLAG_UPDATE_CURRENT so that we get the same pending intent back when calling
         // addGeofences() and removeGeofences().
         return PendingIntent.getService(activity, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+
+    private fun computeGeofenceList() {
+
+    }
+
+    /**
+     * Builds and returns a GeofencingRequest. Specifies the list of geofences to be monitored.
+     * Also specifies how the geofence notifications are initially triggered.
+     */
+    private fun getGeofencingRequest(): GeofencingRequest {
+        val builder: GeofencingRequest.Builder = GeofencingRequest.Builder()
+        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
+        builder.addGeofences(mGeofenceList)
+        return builder.build()
+    }
+
+    /**
+     * Stores whether geofences were added ore removed in [SharedPreferences];
+
+     * @param added Whether geofences were added or removed.
+     */
+    private fun updateGeofencesAdded(added: Boolean) {
+        PreferenceManager.getDefaultSharedPreferences(activity)
+                .edit()
+                .putBoolean(Constants.GEOFENCES_ADDED_KEY, added)
+                .apply()
+    }
+
+
+    /**
+     * Returns true if geofences are present already by checking the shared preference key, otherwise false.
+     */
+    private fun isGeofenceAlreadyAdded(): Boolean {
+        return PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(
+                Constants.GEOFENCES_ADDED_KEY, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
