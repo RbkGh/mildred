@@ -24,7 +24,8 @@ open class MildredBaseActivity : SwipeBackActivity() {
                 .withPermissions(
                         Manifest.permission.INTERNET,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.GET_ACCOUNTS
                 ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
                 TODO("not implemented")

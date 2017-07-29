@@ -1,6 +1,7 @@
 package com.swiftpot.android.mildred.base
 
 import android.app.Application
+import com.orhanobut.hawk.Hawk
 import com.swiftpot.android.mildred.BuildConfig
 import me.yokeyword.fragmentation.Fragmentation
 
@@ -15,5 +16,7 @@ class MildredBaseApplication : Application(){
                 .stackViewMode(Fragmentation.BUBBLE)
                 .debug(BuildConfig.DEBUG)
                 .install()
+        //init hawk db
+        Hawk.init(baseContext).build()
     }
 }

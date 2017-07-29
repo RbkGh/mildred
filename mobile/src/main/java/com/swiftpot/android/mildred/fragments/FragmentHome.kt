@@ -22,7 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.swiftpot.android.mildred.R
 import com.swiftpot.android.mildred.services.GeofenceTransitionsIntentService
-import com.swiftpot.android.mildred.util.Constants
+import com.swiftpot.android.mildred.util.AppConstants
 import me.yokeyword.fragmentation.SupportFragment
 import java.util.ArrayList
 
@@ -147,7 +147,7 @@ class FragmentHome : SupportFragment(), OnCompleteListener<Void> {
     private fun updateGeofencesAdded(added: Boolean) {
         PreferenceManager.getDefaultSharedPreferences(activity)
                 .edit()
-                .putBoolean(Constants.GEOFENCES_ADDED_KEY, added)
+                .putBoolean(AppConstants.GEOFENCES_ADDED_KEY, added)
                 .apply()
     }
 
@@ -157,7 +157,7 @@ class FragmentHome : SupportFragment(), OnCompleteListener<Void> {
      */
     private fun isGeofenceAlreadyAdded(): Boolean {
         return PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(
-                Constants.GEOFENCES_ADDED_KEY, false)
+                AppConstants.GEOFENCES_ADDED_KEY, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
