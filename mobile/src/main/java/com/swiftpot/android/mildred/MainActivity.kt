@@ -4,19 +4,19 @@ package com.swiftpot.android.mildred
 import android.accounts.AccountManager
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
-import com.orhanobut.hawk.Hawk
-import com.swiftpot.android.mildred.base.MildredBaseActivity
-import com.swiftpot.android.mildred.fragments.FragmentHome
-import com.swiftpot.android.mildred.util.AppConstants
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.sheets.v4.SheetsScopes
-import android.content.Intent
-import android.net.ConnectivityManager
+import com.orhanobut.hawk.Hawk
+import com.swiftpot.android.mildred.base.MildredBaseActivity
+import com.swiftpot.android.mildred.fragments.FragmentHome
+import com.swiftpot.android.mildred.util.AppConstants
 
 
 class MainActivity : MildredBaseActivity(), FragmentHome.OnFragmentInteractionListener {
@@ -36,6 +36,9 @@ class MainActivity : MildredBaseActivity(), FragmentHome.OnFragmentInteractionLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //initialize hawk
+        Hawk.init(this).build()
 
         mCredential = GoogleAccountCredential.usingOAuth2(applicationContext,
                 SCOPES)
